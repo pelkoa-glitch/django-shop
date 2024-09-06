@@ -1,0 +1,9 @@
+.vscode/
+*.pyc
+.env
+static/*
+!static/.gitkeep
+media/*
+!media/.gitkeep
+*.sqlite*
+.pytest_cache
