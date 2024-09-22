@@ -1,8 +1,10 @@
-# Django Social Website
+# Django Online Store
 
-### A simple social website where you can:
+### A simple django e-commerce website where you can:
 
-Online store. Allows customers to browse products, add them to the cart, pay by credit card
+Select products
+add them to your cart 
+make a purchase by paying with a credit card
 
 ## Requirements
 
