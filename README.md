@@ -2,9 +2,9 @@
 
 ### A simple django e-commerce website where you can:
 
-Select products
-add them to your cart 
-make a purchase by paying with a credit card
+* Select products
+* add them to your cart 
+* make a purchase by paying with a credit card
 
 ## Requirements
 
