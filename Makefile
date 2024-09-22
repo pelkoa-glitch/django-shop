@@ -5,7 +5,7 @@ LOGS = docker logs
 ENV = --env-file .env
 APP_CONTAINER = django-shop
 DB_CONTAINER = django-shop-db
-RABBIT_CONTAINER = shop-rabbinmq
+RABBIT_CONTAINER = shop-rabbitmq
 CELERY_CONTAINER = shop-celery
 FLOWER_CONTAINER = flower
 APP_FILE = docker_compose/app.yaml
@@ -40,6 +40,15 @@ migrate-local:
 
 
 # up containers
+
+.PHONY: all
+all:
+	${DC} -f ${APP_FILE} ${env} -f ${STORAGES_FILE} ${ENV} -f ${RABBIT_FILE} ${ENV} -f ${CELERY_FILE} ${ENV} -f ${FLOWER_FILE} ${ENV} up --build -d
+
+.PHONY: all-down
+all-down:
+	${DC} -f ${APP_FILE} ${env} -f ${STORAGES_FILE} ${ENV} -f ${RABBIT_FILE} ${ENV} -f ${CELERY_FILE} ${ENV} -f ${FLOWER_FILE} ${ENV} down
+
 .PHONY: app
 app:
 	${DC} -f ${APP_FILE} ${env} -f ${STORAGES_FILE} ${ENV} -f ${RABBIT_FILE} ${ENV} up --build -d
