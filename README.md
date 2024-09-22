@@ -3,7 +3,7 @@
 ### A simple django e-commerce website where you can:
 
 * Select products
-* add them to your cart 
+* add them to your cart
 * make a purchase by paying with a credit card
 
 ## Requirements
@@ -28,17 +28,16 @@
         cd django-shop  -  go to project folder
         poetry install  -  install dependencies
         poetry shell    -  activate python venv
-        make app        -  up application, database and rabbitmq
-        make celery     -  up celery container
-        make flower     -  up flower container
+        make all        -  will run all docker containers
 5. Go to http://0.0.0.0:8000 and enjoy the app
 
 6. Also rabbit management will be on http://127.0.0.1:15672,
     flower(celery workers) will be on http://127.0.0.1:5555
 
 ### Implemented Commands
-
-* `make app` - up application and database/infrastructure
+* `make all` - up all containers
+* `make all-down` - down all containers
+* `make app` - up application, database and rabbitmq
 * `make app-logs` - follow the logs in app container
 * `make app-down` - down application and all infrastructure
 * `make storages` - up only storages. you should run your application locally for debugging/developing purposes
