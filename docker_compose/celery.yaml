@@ -1,0 +1,10 @@
+services:
+  celery:
+    container_name: shop-celery
+    build:
+      context: ..
+    command: celery -A django_shop worker -l INFO
+    env_file:
+      - ../.env
+    volumes:
+      - ..:/app/

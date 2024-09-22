@@ -11,5 +11,6 @@ services:
       - ../.env
     depends_on:
       - postgres
+      - rabbitmq
     volumes:
       - ..:/app/

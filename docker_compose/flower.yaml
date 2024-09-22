@@ -1,0 +1,12 @@
+services:
+  flower:
+    container_name: flower
+    build:
+      context: ..
+    ports:
+     - "5555:5555"
+    command: celery -A django_shop flower
+    env_file:
+      - ../.env
+    volumes:
+      - ..:/app/
