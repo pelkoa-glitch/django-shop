@@ -44,6 +44,10 @@ migrate-local:
 app:
 	${DC} -f ${APP_FILE} ${env} -f ${STORAGES_FILE} ${ENV} -f ${RABBIT_FILE} ${ENV} up --build -d
 
+.PHONY: app-logs
+app-logs:
+	${LOGS} ${APP_CONTAINER} -f
+
 .PHONY: app-down
 app-down:
 	${DC} -f ${APP_FILE} ${env} -f ${STORAGES_FILE} ${ENV} -f ${RABBIT_FILE} ${ENV} down
@@ -52,27 +56,51 @@ app-down:
 storages:
 	${DC} -f ${STORAGES_FILE} ${ENV} up -d
 
+.PHONY: storages-logs
+storages-logs:
+	${LOGS} ${DB_CONTAINER} -f
+
 .PHONY: storages-down
 storages-down:
 	${DC} -f ${STORAGES_FILE} ${ENV} down
-
 
 .PHONY: celery
 celery:
 	${DC} -f ${CELERY_FILE} up -d
 
+.PHONY: celery-logs
+celery-logs:
+	${LOGS} ${CELERY_CONTAINER} -f
+
+.PHONY: celery-down
+celery-down:
+	${DC} -f ${CELERY_FILE} down
+
 .PHONY: flower
 flower:
 	${DC} -f ${FLOWER_FILE} up -d
+
+.PHONY: flower-logs
+flower-logs:
+	${LOGS} ${FLOWER_CONTAINER} -f
+
+.PHONY: flower-down
+flower-down:
+	${DC} -f ${FLOWER_FILE} down
 
 
 .PHONY: rabbitmq
 rabbitmq:
 	${DC} -f ${RABBIT_FILE} ${ENV} up -d
 
+.PHONY: rabbitmq-logs
+rabbitmq-logs:
+	${LOGS} ${RABBIT_CONTAINER} -f
+
 .PHONY: rabbitmq-down
 rabbitmq-down:
 	${DC} -f ${RABBIT_FILE} ${ENV} down
+
 # Django commands
 .PHONY: migrate
 migrate:
